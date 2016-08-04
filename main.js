@@ -61,7 +61,9 @@ function HSV_RGB (h, s, v) {
 }
 
 function hsvToCss(h, s, v) {
-  return 'hsl(' + h + ', ' + s + '%, ' + v + '%)';
+  let [r, g, b] = HSV_RGB(h, s, v);
+  return 'rgb(' + Math.floor(r) + ', ' + Math.floor(g) + ', ' +
+         Math.floor(b) + ')';
 }
 
 function *betterColors(hsv1, hsv2) {
