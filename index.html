@@ -154,8 +154,10 @@ onload = () => {
     if (ratio >= WCAG_MIN_RATIO) {
       color1Adjust.disabled = color2Adjust.disabled = true;
     } else {
-      color1Adjust.disabled = !getBestWcagColor(color1.jscolor.hsv, color2.jscolor.hsv);
-      color2Adjust.disabled = !getBestWcagColor(color2.jscolor.hsv, color1.jscolor.hsv);
+      color1Adjust.disabled = !getBestWcagColor(color1.jscolor.hsv,
+                                                color2.jscolor.hsv);
+      color2Adjust.disabled = !getBestWcagColor(color2.jscolor.hsv,
+                                                color1.jscolor.hsv);
     }
 
     document.body.style.color = '#' + color1.value;
