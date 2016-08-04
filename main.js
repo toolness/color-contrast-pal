@@ -72,6 +72,8 @@ function *betterColors(hsv1, hsv2) {
       // Lighten our color.
       if (v < 100) {
         v++;
+      } else if (s > 0) {
+        s--;
       } else {
         return;
       }
@@ -79,6 +81,8 @@ function *betterColors(hsv1, hsv2) {
       // Darken our color.
       if (v > 0) {
         v--;
+      } else if (s < 100) {
+        s++;
       } else {
         return;
       }
