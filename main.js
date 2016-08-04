@@ -142,8 +142,8 @@ onload = () => {
   }
 
   updateContrastRatio();
-  color1.onchange = updateContrastRatio;
-  color2.onchange = updateContrastRatio;
+  color1.jscolor.onFineChange = updateContrastRatio;
+  color2.jscolor.onFineChange = updateContrastRatio;
   color1Adjust.onclick = () => { adjust(color1, color2); };
   color2Adjust.onclick = () => { adjust(color2, color1); };
 };
