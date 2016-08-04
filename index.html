@@ -5,8 +5,23 @@ html {
   font-family: sans-serif;
 }
 
+button {
+  display: block;
+  margin-top: 1em;
+  padding: 3em;
+  border: 1px solid black;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
 button[disabled] {
-  display: none;
+  visibility: hidden;
 }
 
 input.jscolor {
