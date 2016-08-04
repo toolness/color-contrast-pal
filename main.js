@@ -60,6 +60,10 @@ function HSV_RGB (h, s, v) {
   }
 }
 
+function hsvToCss(h, s, v) {
+  return 'hsl(' + h + ', ' + s + '%, ' + v + '%)';
+}
+
 function *betterColors(hsv1, hsv2) {
   while (true) {
     let rgb1 = HSV_RGB.apply(null, hsv1);
@@ -125,10 +129,23 @@ onload = () => {
     if (ratio >= WCAG_MIN_RATIO) {
       color1Adjust.disabled = color2Adjust.disabled = true;
     } else {
-      color1Adjust.disabled = !getBestWcagColor(color1.jscolor.hsv,
-                                                color2.jscolor.hsv);
-      color2Adjust.disabled = !getBestWcagColor(color2.jscolor.hsv,
-                                                color1.jscolor.hsv);
+      let best1 = getBestWcagColor(color1.jscolor.hsv, color2.jscolor.hsv);
+
+      color1Adjust.disabled = !best1;
+
+      if (best1) {
+        color1Adjust.style.color = hsvToCss.apply(null, best1);
+        color1Adjust.style.background = color2.jscolor.toHEXString();
+      }
+
+      let best2 = getBestWcagColor(color2.jscolor.hsv, color1.jscolor.hsv);
+
+      color2Adjust.disabled = !best2;
+
+      if (best2) {
+        color2Adjust.style.color = color1.jscolor.toHEXString();
+        color2Adjust.style.background = hsvToCss.apply(null, best2);
+      }
     }
 
     document.body.style.color = '#' + color1.value;
